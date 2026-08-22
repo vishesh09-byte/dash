@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gitshub Dashboard</title>
+    <title>vishesh Live 1</title>
     <style>
         * {
             margin: 0;
@@ -18,21 +18,21 @@
             overflow: hidden;
             background-size: cover;
             background-position: center;
-            background-color: #000;
+            background-color: #111;
             position: relative;
             transition: background-image 1s ease-in-out;
         }
 
-        /* 1. TOP LEFT: CLOCK AND DATE (50% TRANSPARENT WHITE) */
+        /* 1. TOP LEFT: CLOCK & DATE (50% TRANSPARENT WHITE) */
         .clock-container {
             position: absolute;
             top: 20px;
             left: 30px;
-            background: rgba(255, 255, 255, 0.5); /* 50% transparency */
+            background: rgba(255, 255, 255, 0.5); /* 50% opacity */
             backdrop-filter: blur(8px);
             padding: 15px 30px;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             text-align: center;
             z-index: 10;
         }
@@ -45,22 +45,22 @@
         }
 
         .clock-date {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #111;
             margin-top: 8px;
         }
 
-        /* 2. MIDDLE LEFT: LIVE INDIAN STOCK MARKET WIDGET */
+        /* 2. MIDDLE LEFT: LIVE STOCKS (INC. GOLD & USD/INR) */
         .stocks-container {
             position: absolute;
             top: 48%;
             left: 30px;
             transform: translateY(-50%);
-            width: 320px;
+            width: 330px;
             background: rgba(18, 20, 26, 0.92);
-            border-radius: 4px;
-            padding: 10px;
+            border-radius: 6px;
+            padding: 12px;
             color: #fff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             z-index: 10;
@@ -70,7 +70,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 8px;
+            padding: 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -79,16 +79,15 @@
         }
 
         .stock-name {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             color: #fff;
-            text-transform: uppercase;
         }
 
         .stock-time {
             font-size: 0.65rem;
-            color: #aaa;
-            margin-top: 3px;
+            color: #888;
+            margin-top: 2px;
         }
 
         .stock-right {
@@ -96,12 +95,12 @@
         }
 
         .stock-price {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: bold;
         }
 
         .stock-change {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             margin-top: 2px;
         }
@@ -109,21 +108,21 @@
         .positive { color: #00e676; }
         .negative { color: #ff5252; }
 
-        /* 3. BOTTOM LEFT: LIVE NEWS FEED WIDGET (TOI & NDTV) */
+        /* 3. BOTTOM LEFT: LIVE NEWS WITH REAL IMAGES 
         .news-container {
             position: absolute;
             bottom: 20px;
             left: 30px;
-            width: 520px;
-            height: 180px;
-            background: rgba(0, 0, 0, 0.55);
+            width: 420px;
+            height: 170px;
+            background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
             border-radius: 6px;
             padding: 15px;
             color: #fff;
             display: flex;
             gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             z-index: 10;
         }
 
@@ -135,40 +134,121 @@
         }
 
         .news-source {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #ff9800;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .news-headline {
-            font-size: 1.05rem;
+            font-size: 1.23rem;
             line-height: 1.35;
             color: #e0e0e0;
-            margin-top: 5px;
+            margin-top: 4px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
         }
 
         .news-image {
-            width: 150px;
+            width: 140px;
             height: 100%;
             object-fit: cover;
             border-radius: 4px;
             background-color: #222;
         }
+        */
+/* 3. BOTTOM LEFT: NEWS + AAJ TAK LIVE */
+.news-container {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    width: 720px;
+    height: 170px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    border-radius: 6px;
+    padding: 15px;
+    color: #fff;
+    display: flex;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 10;
+}
 
-        /* 4. BOTTOM RIGHT: LIVE WEATHER FORECAST */
+.news-text-side {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.news-source {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.news-headline {
+    font-size: 1.23rem;
+    line-height: 1.35;
+    color: #e0e0e0;
+    margin-top: 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.news-image {
+    width: 140px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #222;
+}
+
+/* AAJ TAK LIVE BOX */
+.aajtak-live {
+    width: 220px;
+    height: 140px;
+    flex-shrink: 0;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.aajtak-live iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.aajtak-label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(220, 0, 0, 0.9);
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 3px;
+    z-index: 2;
+}
+        
+
+        /* 4. BOTTOM RIGHT: LIVE WEATHER (BHIWADI, RAJASTHAN) */
         .weather-card {
             position: absolute;
             bottom: 20px;
             right: 30px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             padding: 12px 18px;
             border-radius: 6px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -176,325 +256,368 @@
         }
 
         .weather-city-header {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: #222;
             margin-bottom: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 4px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
         }
 
         .weather-city-header span {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #666;
             font-weight: normal;
         }
 
         .weather-container {
             display: flex;
-            gap: 16px;
+            gap: 14px;
         }
 
         .weather-day {
             text-align: center;
-            width: 45px;
+            width: 42px;
         }
 
         .day-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             color: #333;
-            margin-bottom: 5px;
         }
 
         .weather-icon {
-            font-size: 1.4rem;
-            margin: 4px 0;
+            font-size: 1.3rem;
+            margin: 3px 0;
         }
 
         .temp-range {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             color: #222;
         }
 
         .temp-range span {
             color: #666;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Clock and Date Widget (50% transparent white) -->
+    <!-- Clock and Date -->
     <div class="clock-container">
         <div class="clock-time" id="time-display">00:00 AM</div>
         <div class="clock-date" id="date-display">Loading date...</div>
     </div>
 
     <!-- Live Stock Market Widget -->
-    <div class="stocks-container" id="stocks-widget">
-        <!-- Stock items structure -->
+    <div class="stocks-container">
         <div class="stock-item">
             <div>
                 <div class="stock-name">SENSEX</div>
-                <div class="stock-time" id="sensex-time">Live</div>
+                <div class="stock-time" id="time-SENSEX">Fetching...</div>
             </div>
             <div class="stock-right">
-                <div class="stock-price" id="sensex-price">77,235.46</div>
-                <div class="stock-change negative" id="sensex-change">-492.70 (-0.63%)</div>
+                <div class="stock-price" id="price-SENSEX">--</div>
+                <div class="stock-change" id="change-SENSEX">--</div>
             </div>
         </div>
         <div class="stock-item">
             <div>
                 <div class="stock-name">NIFTY 50</div>
-                <div class="stock-time" id="nifty-time">Live</div>
+                <div class="stock-time" id="time-NIFTY">Fetching...</div>
             </div>
             <div class="stock-right">
-                <div class="stock-price" id="nifty-price">24,154.90</div>
-                <div class="stock-change negative" id="nifty-change">-132.75 (-0.55%)</div>
+                <div class="stock-price" id="price-NIFTY">--</div>
+                <div class="stock-change" id="change-NIFTY">--</div>
             </div>
         </div>
         <div class="stock-item">
             <div>
                 <div class="stock-name">NIFTY BANK</div>
-                <div class="stock-time" id="bank-time">Live</div>
+                <div class="stock-time" id="time-BANK">Fetching...</div>
             </div>
             <div class="stock-right">
-                <div class="stock-price" id="bank-price">57,262.40</div>
-                <div class="stock-change negative" id="bank-change">-235.40 (-0.41%)</div>
+                <div class="stock-price" id="price-BANK">--</div>
+                <div class="stock-change" id="change-BANK">--</div>
             </div>
         </div>
         <div class="stock-item">
             <div>
                 <div class="stock-name">NIFTY MIDCAP 100</div>
-                <div class="stock-time" id="midcap-time">Live</div>
+                <div class="stock-time" id="time-MIDCAP">Fetching...</div>
             </div>
             <div class="stock-right">
-                <div class="stock-price" id="midcap-price">63,539.40</div>
-                <div class="stock-change negative" id="midcap-change">-277.60 (-0.43%)</div>
+                <div class="stock-price" id="price-MIDCAP">--</div>
+                <div class="stock-change" id="change-MIDCAP">--</div>
+            </div>
+        </div>
+        <div class="stock-item">
+            <div>
+                <div class="stock-name">GOLD (MCX / USD)</div>
+                <div class="stock-time" id="time-GOLD">Fetching...</div>
+            </div>
+            <div class="stock-right">
+                <div class="stock-price" id="price-GOLD">--</div>
+                <div class="stock-change" id="change-GOLD">--</div>
+            </div>
+        </div>
+        <div class="stock-item">
+            <div>
+                <div class="stock-name">USD / INR</div>
+                <div class="stock-time" id="time-USDINR">Fetching...</div>
+            </div>
+            <div class="stock-right">
+                <div class="stock-price" id="price-USDINR">--</div>
+                <div class="stock-change" id="change-USDINR">--</div>
             </div>
         </div>
     </div>
 
-    <!-- TOI / NDTV Live News Feed Widget -->
-    <div class="news-container">
-        <div class="news-text-side">
-            <div class="news-source" id="news-source">📰 Times of India</div>
-            <div class="news-headline" id="news-headline">
-                Fetching latest headlines from TOI & NDTV...
-            </div>
+    <!-- Live News Feed Widget (TOI & NDTV) -->
+<div class="news-container">
+
+    <!-- NEWS -->
+    <div class="news-text-side">
+        <div class="news-source" id="news-source">📰 TOI / NDTV Live</div>
+
+        <div class="news-headline" id="news-headline">
+            Fetching live Indian headlines...
         </div>
-        <img id="news-img" class="news-image" src="https://picsum.photos/300/200" alt="News Thumbnail">
     </div>
 
-    <!-- 7-Day Live Weather Widget (Bhiwadi, Rajasthan) -->
+    <img
+        id="news-img"
+        class="news-image"
+        src=""
+        alt="News Image"
+        onerror="this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=300'"
+    >
+
+    <!-- AAJ TAK LIVE -->
+    <div class="aajtak-live">
+        <div class="aajtak-label">🔴 LIVE</div>
+
+        <iframe
+            src="https://www.youtube.com/embed/zhBl5DiJmLg?autoplay=1&mute=1"
+            title="Aaj Tak Live TV"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+</div>
+    
+
+    <!-- Live 7-Day Weather (Bhiwadi, Rajasthan) -->
     <div class="weather-card">
         <div class="weather-city-header">
             📍 Bhiwadi, Rajasthan
-            <span id="weather-update-time">Updating...</span>
+            <span id="weather-update-time">Syncing...</span>
         </div>
-        <div class="weather-container" id="weather-days-container">
-            <!-- Weather elements injected by JS -->
-        </div>
+        <div class="weather-container" id="weather-days"></div>
     </div>
 
     <script>
-        // =========================================================
-        // 1. RANDOM BACKGROUND SYSTEM (PEXELS API)
-        // =========================================================
-        const PEXELS_API_KEY = 'YOUR_PEXELS_API_KEY_HERE'; // <-- GET A FREE KEY FROM PEXELS AND PASTE IT HERE
+        // ==========================================
+        // 1. RANDOM BACKGROUND GENERATOR (2 MINS)
+        // ==========================================
+        const bgImages = [
+            'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80',
+            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1920&q=80',
+            'https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1920&q=80',
+            'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1920&q=80',
+            'https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=1920&q=80'
+        ];
 
-        async function changeBackground() {
-            // Random timestamp to prevent caching if falling back
-            const timeCache = new Date().getTime(); 
-
-            if (PEXELS_API_KEY === 'YOUR_PEXELS_API_KEY_HERE') {
-                // Fallback to picsum if user hasn't added Pexels API Key
-                document.body.style.backgroundImage = `url('https://picsum.photos/1920/1080?nature&random=${timeCache}')`;
-                return;
-            }
-
-            try {
-                // Fetch random high quality image from pexels curated list
-                const page = Math.floor(Math.random() * 100) + 1;
-                const res = await fetch(`https://api.pexels.com/v1/curated?per_page=1&page=${page}`, {
-                    headers: { Authorization: PEXELS_API_KEY }
-                });
-                const data = await res.json();
-                
-                if (data.photos && data.photos.length > 0) {
-                    const imgUrl = data.photos[0].src.original;
-                    document.body.style.backgroundImage = `url('${imgUrl}')`;
-                }
-            } catch (error) {
-                console.error("Pexels load failed, using fallback.", error);
-                document.body.style.backgroundImage = `url('https://picsum.photos/1920/1080?nature&random=${timeCache}')`;
-            }
+        function changeBg() {
+            const selected = bgImages[Math.floor(Math.random() * bgImages.length)];
+            document.body.style.backgroundImage = `url('${selected}')`;
         }
+        changeBg();
+        setInterval(changeBg, 120000); // 2 Minutes
 
-        changeBackground();
-        setInterval(changeBackground, 120000); // Switch every 2 minutes (120,000ms)
-
-        // =========================================================
+        // ==========================================
         // 2. LIVE CLOCK & DATE
-        // =========================================================
+        // ==========================================
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12 || 12;
-            
+
             document.getElementById("time-display").innerText = `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
-            document.getElementById("date-display").innerText = now.toLocaleDateString('en-GB', {
+            document.getElementById("date-display").innerText = now.toLocaleDateString('en-IN', {
                 day: 'numeric', month: 'long', year: 'numeric', weekday: 'long'
             });
         }
         updateClock();
         setInterval(updateClock, 1000);
 
-        // =========================================================
-        // 3. LIVE NEWS FEED (TOI & NDTV RSS FEEDS)
-        // =========================================================
-        const newsFeeds = [
-            { source: "📰 Times of India", url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms" },
-            { source: "📺 NDTV India", url: "https://feeds.feedburner.com/ndtvnews-india-news" }
+        // ==========================================
+        // 3. REAL LIVE STOCKS & CURRENCY (YAHOO API VIA CORS PROXY)
+        // ==========================================
+        const stockSymbols = [
+            { id: 'SENSEX', symbol: '^BSESN' },
+            { id: 'NIFTY', symbol: '^NSEI' },
+            { id: 'BANK', symbol: '^NSEBANK' },
+            { id: 'MIDCAP', symbol: 'NIFTYSMLCAP50.NS' },
+            { id: 'GOLD', symbol: 'GC=F' },
+            { id: 'USDINR', symbol: 'INR=X' }
         ];
 
-        let articlesList = [];
-        let newsIndex = 0;
+        async function fetchStockData() {
+            const now = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
-        async function fetchLiveNews() {
-            articlesList = [];
-            for (const feed of newsFeeds) {
+            for (const item of stockSymbols) {
                 try {
-                    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`);
+                    const targetUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(item.symbol)}?interval=1m&range=1d`;
+                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+                    
+                    const res = await fetch(proxyUrl);
                     const data = await res.json();
+                    
+                    const meta = data.chart.result[0].meta;
+                    const price = meta.regularMarketPrice;
+                    const prevClose = meta.chartPreviousClose || meta.previousClose;
+                    const change = price - prevClose;
+                    const percent = (change / prevClose) * 100;
+
+                    const priceEl = document.getElementById(`price-${item.id}`);
+                    const changeEl = document.getElementById(`change-${item.id}`);
+                    const timeEl = document.getElementById(`time-${item.id}`);
+
+                    priceEl.innerText = price.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+                    
+                    const sign = change >= 0 ? '+' : '';
+                    changeEl.innerText = `${sign}${change.toFixed(2)} (${sign}${percent.toFixed(2)}%)`;
+                    changeEl.className = `stock-change ${change >= 0 ? 'positive' : 'negative'}`;
+                    timeEl.innerText = `Live ${now}`;
+                } catch (e) {
+                    console.log(`Failed loading ${item.id}`, e);
+                }
+            }
+        }
+        fetchStockData();
+        setInterval(fetchStockData, 60000); // Refresh live quotes every 60 seconds
+
+        // ==========================================
+        // 4. LIVE NEWS (TOI & NDTV) WITH ACCURATE IMAGES
+        // ==========================================
+        const rssSources = [
+            { name: "📰 Times of India", url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms" },
+            { name: "📺 NDTV India", url: "https://feeds.feedburner.com/ndtvnews-india-news" }
+        ];
+
+        let articles = [];
+        let newsIdx = 0;
+
+        async function loadNews() {
+            articles = [];
+            for (const source of rssSources) {
+                try {
+                    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`);
+                    const data = await res.json();
+
                     if (data.status === 'ok' && data.items) {
                         data.items.forEach(item => {
                             let imgUrl = item.thumbnail || (item.enclosure ? item.enclosure.link : null);
+                            
+                            // Extract real thumbnail from description HTML if missing
                             if (!imgUrl && item.description) {
-                                const m = item.description.match(/<img[^>]+src="([^">]+)"/);
-                                if (m) imgUrl = m[1];
+                                const match = item.description.match(/src=["']([^"']+\.(?:png|jpg|jpeg|webp)[^"']*)["']/i);
+                                if (match) imgUrl = match[1];
                             }
-                            articlesList.push({
-                                source: feed.source,
+
+                            articles.push({
+                                sourceName: source.name,
                                 title: item.title,
-                                image: imgUrl || `https://picsum.photos/300/200?random=${Math.random()}`
+                                img: imgUrl || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=300'
                             });
                         });
                     }
-                } catch (e) {
-                    console.log("Error fetching feed", e);
+                } catch (err) {
+                    console.log("News load error", err);
                 }
             }
-            // Shuffle array slightly to mix TOI and NDTV
-            articlesList.sort(() => 0.5 - Math.random());
-            if (articlesList.length > 0) rotateNews();
+            if (articles.length > 0) renderNextNews();
         }
 
-        function rotateNews() {
-            if (articlesList.length === 0) return;
-            const headlineEl = document.getElementById("news-headline");
-            const imgEl = document.getElementById("news-img");
-            const sourceEl = document.getElementById("news-source");
+        function renderNextNews() {
+            if (articles.length === 0) return;
+            const headline = document.getElementById("news-headline");
+            const img = document.getElementById("news-img");
+            const src = document.getElementById("news-source");
 
-            headlineEl.style.opacity = '0';
+            headline.style.opacity = '0';
             setTimeout(() => {
-                const currentArticle = articlesList[newsIndex];
-                sourceEl.innerText = currentArticle.source;
-                headlineEl.innerText = currentArticle.title;
-                imgEl.src = currentArticle.image;
-                headlineEl.style.opacity = '1';
+                const item = articles[newsIdx];
+                src.innerText = item.sourceName;
+                headline.innerText = item.title;
+                img.src = item.img;
+                headline.style.opacity = '1';
 
-                newsIndex = (newsIndex + 1) % articlesList.length;
-            }, 500);
+                newsIdx = (newsIdx + 1) % articles.length;
+            }, 400);
         }
 
-        fetchLiveNews();
-        setInterval(rotateNews, 30000); // Every 30 seconds
-        setInterval(fetchLiveNews, 600000); // Refresh feed every 10 mins
+        loadNews();
+        setInterval(renderNextNews, 30000); // Rotate news every 30 seconds
+        setInterval(loadNews, 600000); // Reload feed pool every 10 mins
 
-        // =========================================================
-        // 4. LIVE WEATHER FORECAST (BHIWADI) - OPEN-METEO API
-        // =========================================================
-        function getWeatherEmoji(wmoCode) {
-            // WMO Weather interpretation codes
-            if (wmoCode === 0) return '☀️'; // Clear
-            if ([1, 2, 3].includes(wmoCode)) return '⛅'; // Partly cloudy
-            if ([45, 48].includes(wmoCode)) return '🌫️'; // Fog
-            if ([51, 53, 55, 56, 57].includes(wmoCode)) return '🌦️'; // Drizzle
-            if ([61, 63, 65, 66, 67].includes(wmoCode)) return '🌧️'; // Rain
-            if ([71, 73, 75, 77].includes(wmoCode)) return '❄️'; // Snow
-            if ([80, 81, 82].includes(wmoCode)) return '🌧️'; // Rain showers
-            if ([95, 96, 99].includes(wmoCode)) return '⛈️'; // Thunderstorm
-            return '☁️'; // Default
+        // ==========================================
+        // 5. LIVE WEATHER FORECAST (BHIWADI, RAJASTHAN)
+        // ==========================================
+        function getWeatherEmoji(code) {
+            if (code === 0) return '☀️';
+            if ([1, 2, 3].includes(code)) return '⛅';
+            if ([45, 48].includes(code)) return '🌫️';
+            if ([51, 53, 55, 61, 63, 65, 80, 81].includes(code)) return '🌧️';
+            if ([95, 96, 99].includes(code)) return '⛈️';
+            return '☁️';
         }
 
         async function fetchLiveWeather() {
-            // Coordinates for Bhiwadi, Rajasthan
-            const lat = 28.2072;
-            const lon = 76.8413;
-            const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FKolkata`;
+            // Latitude & Longitude for Bhiwadi, Rajasthan
+            const lat = 28.2072, lon = 76.8413;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FKolkata`;
 
             try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                
-                const container = document.getElementById('weather-days-container');
-                container.innerHTML = ''; // Clear previous
+                const res = await fetch(url);
+                const data = await res.json();
+                const container = document.getElementById('weather-days');
+                container.innerHTML = '';
 
-                // Open-Meteo returns up to 7 days
-                for(let i = 0; i < 7; i++) {
-                    const dateObj = new Date(data.daily.time[i]);
-                    // Display "Today" for index 0, else short weekday name
-                    const dayName = i === 0 ? "Today" : dateObj.toLocaleDateString('en-US', { weekday: 'short' });
-                    
-                    const maxTemp = Math.round(data.daily.temperature_2m_max[i]);
-                    const minTemp = Math.round(data.daily.temperature_2m_min[i]);
-                    const emoji = getWeatherEmoji(data.daily.weathercode[i]);
+                for (let i = 0; i < 7; i++) {
+                    const date = new Date(data.daily.time[i]);
+                    const dayLabel = i === 0 ? "Today" : date.toLocaleDateString('en-US', { weekday: 'short' });
+                    const max = Math.round(data.daily.temperature_2m_max[i]);
+                    const min = Math.round(data.daily.temperature_2m_min[i]);
+                    const icon = getWeatherEmoji(data.daily.weathercode[i]);
 
                     container.innerHTML += `
                         <div class="weather-day">
-                            <div class="day-title">${dayName}</div>
-                            <div class="weather-icon">${emoji}</div>
-                            <div class="temp-range">${maxTemp}° <span>${minTemp}°</span></div>
+                            <div class="day-title">${dayLabel}</div>
+                            <div class="weather-icon">${icon}</div>
+                            <div class="temp-range">${max}° <span>${min}°</span></div>
                         </div>
                     `;
                 }
 
-                // Update 'last updated' time text
-                const nowTime = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-                document.getElementById('weather-update-time').innerText = `Updated: ${nowTime}`;
-            } catch (error) {
-                console.error("Failed to fetch live weather", error);
-                document.getElementById('weather-update-time').innerText = "Offline Mode";
+                const timeStr = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('weather-update-time').innerText = `Updated ${timeStr}`;
+            } catch (err) {
+                console.log("Weather error", err);
             }
         }
 
         fetchLiveWeather();
-        setInterval(fetchLiveWeather, 900000); // 15 minutes = 900,000ms
-
-        // =========================================================
-        // 5. LIVE STOCK MARKET POLLING (UI Only update simulator)
-        // =========================================================
-        function updateStockTimes() {
-            const nowTime = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-            document.getElementById('sensex-time').innerText = `Live ${nowTime}`;
-            document.getElementById('nifty-time').innerText = `Live ${nowTime}`;
-            document.getElementById('bank-time').innerText = `Live ${nowTime}`;
-            document.getElementById('midcap-time').innerText = `Live ${nowTime}`;
-            
-            // To make stocks truly live requires premium API keys (e.g. AlphaVantage). 
-            // In a production environment, you would place a fetch() request here to update the prices.
-        }
-        updateStockTimes();
-        setInterval(updateStockTimes, 60000); // Refresh indicator every minute
-
+        setInterval(fetchLiveWeather, 900000); // 15 minutes live refresh
     </script>
 </body>
 </html>
