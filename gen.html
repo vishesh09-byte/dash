@@ -3,729 +3,503 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Vishesh Live - Unsplash Image Generator</title>
+<title>Vishesh Live 2 – Photo Generator</title>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
 
-* {
-    box-sizing: border-box;
-}
+    body {
+        margin: 0;
+        padding: 25px;
+        background: #111;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
 
-body {
-    margin: 0;
-    padding: 30px;
+    h1 {
+        margin-top: 0;
+    }
 
-    font-family: Arial, Helvetica, sans-serif;
+    .note {
+        background: #222;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
 
-    background: #111;
-    color: white;
-}
+    input {
+        width: 100%;
+        max-width: 600px;
+        padding: 12px;
+        border-radius: 7px;
+        border: 1px solid #555;
+        background: #181818;
+        color: white;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-}
+    button {
+        padding: 10px 14px;
+        margin: 5px;
+        border: 0;
+        border-radius: 7px;
+        cursor: pointer;
+        background: #333;
+        color: white;
+        font-size: 14px;
+    }
 
-h1 {
-    margin-top: 0;
-}
+    button:hover {
+        background: #555;
+    }
 
-.description {
-    color: #ccc;
-    line-height: 1.6;
-}
+    button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
 
-.warning {
-    background: #3a2800;
-    border: 1px solid #8a6500;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 20px 0;
-    line-height: 1.5;
-}
+    .country-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin: 20px 0;
+    }
 
-label {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 7px;
-    font-weight: bold;
-}
+    .country {
+        min-width: 130px;
+    }
 
-input {
-    width: 100%;
+    .progress {
+        margin-top: 20px;
+        padding: 15px;
+        background: #222;
+        border-radius: 10px;
+    }
 
-    padding: 12px;
+    #status {
+        white-space: pre-line;
+        margin-top: 15px;
+        color: #ddd;
+    }
 
-    border-radius: 8px;
+    .download {
+        background: #176b3a;
+        font-size: 16px;
+        padding: 12px 20px;
+    }
 
-    border: 1px solid #555;
+    .clear {
+        background: #722222;
+    }
 
-    background: #222;
-
-    color: white;
-
-    font-size: 15px;
-}
-
-button {
-    margin-top: 20px;
-
-    padding: 13px 22px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #ffffff;
-
-    color: #111;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-button:hover {
-    background: #ddd;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-#status {
-    margin-top: 25px;
-
-    padding: 15px;
-
-    background: #1d1d1d;
-
-    border-radius: 10px;
-
-    white-space: pre-line;
-
-    line-height: 1.5;
-}
-
-.progress {
-    margin-top: 15px;
-
-    width: 100%;
-
-    height: 12px;
-
-    background: #333;
-
-    border-radius: 10px;
-
-    overflow: hidden;
-}
-
-.progress-bar {
-    width: 0%;
-
-    height: 100%;
-
-    background: #fff;
-
-    transition: width 0.3s;
-}
-
-.success {
-    color: #7CFF9B;
-}
-
-.error {
-    color: #FF7777;
-}
-
-.small {
-    color: #999;
-
-    font-size: 13px;
-
-    margin-top: 20px;
-
-    line-height: 1.5;
-}
-
+    .count {
+        font-size: 12px;
+        color: #aaa;
+        display: block;
+        margin-top: 3px;
+    }
 </style>
 </head>
 
-
 <body>
 
-<div class="container">
+<h1>🌍 Vishesh Live 2 – Background Photo Generator</h1>
 
-    <h1>🌍 Vishesh Live</h1>
-
-    <p class="description">
-        This tool creates the curated background-image database
-        for your Vishesh Live dashboard using the Unsplash API.
-    </p>
-
-
-    <div class="warning">
-
-        <strong>Important:</strong><br><br>
-
-        Your Unsplash Access Key is used only in this browser session.
-        It is not written into the generated JavaScript file.
-
-        <br><br>
-
-        Do <strong>NOT</strong> enter your Unsplash Secret Key here.
-
-    </div>
-
-
-    <label for="accessKey">
-        Unsplash Access Key
-    </label>
-
-    <input
-        id="accessKey"
-        type="password"
-        placeholder="Paste your Unsplash Access Key here"
-        autocomplete="off"
-    >
-
-
-    <button
-        id="generateButton"
-        onclick="generateImages()">
-
-        Generate Curated Image Database
-
-    </button>
-
-
-    <div class="progress">
-
-        <div
-            id="progressBar"
-            class="progress-bar">
-        </div>
-
-    </div>
-
-
-    <div id="status">
-
-        Ready.
-
-        <br><br>
-
-        The generator will collect landscape photographs
-        for 15 countries.
-
-    </div>
-
-
-    <div class="small">
-
-        The generated file will be called
-        <strong>countryImages.js</strong>.
-
-        <br><br>
-
-        It will contain the image URLs returned by Unsplash,
-        photographer information and attribution links.
-
-    </div>
-
+<div class="note">
+    <b>Instructions</b><br>
+    1. Enter your Unsplash Access Key.<br>
+    2. Select a country.<br>
+    3. The generator searches several queries and collects up to 50 photos.<br>
+    4. Progress is saved automatically in this browser.<br>
+    5. You can close the browser and continue later.<br>
+    6. When finished, download <b>countryImages.js</b>.
 </div>
 
+<label><b>Unsplash Access Key</b></label><br>
+
+<input
+    type="password"
+    id="accessKey"
+    placeholder="Paste your Unsplash Access Key here"
+>
+
+<div>
+    <button onclick="generateAll()">Generate All Countries</button>
+    <button onclick="downloadJS()" class="download">
+        Download countryImages.js
+    </button>
+    <button onclick="clearProgress()" class="clear">
+        Clear Saved Progress
+    </button>
+</div>
+
+<h2>Countries</h2>
+
+<div class="country-grid" id="countries"></div>
+
+<div class="progress">
+    <b>Total progress:</b>
+    <span id="totalProgress">0 / 750 photos</span>
+
+    <div id="status">Ready.</div>
+</div>
 
 
 <script>
 
-/* =========================================================
-   CONFIGURATION
-========================================================= */
-
-
-/*
-   15 countries
-
-   The queries deliberately use several geographic terms
-   so that we get more useful scenery than simply searching
-   the country name.
-*/
-
-const countries = [
-
-    {
-        name: "🇮🇳 India",
-        query: "India landscape nature mountains Rajasthan Kerala"
-    },
-
-    {
-        name: "🇯🇵 Japan",
-        query: "Japan landscape nature mountains Kyoto Fuji Hokkaido"
-    },
-
-    {
-        name: "🇨🇭 Switzerland",
-        query: "Switzerland landscape Alps mountains lakes"
-    },
-
-    {
-        name: "🇳🇴 Norway",
-        query: "Norway landscape fjords mountains Lofoten"
-    },
-
-    {
-        name: "🇮🇸 Iceland",
-        query: "Iceland landscape waterfalls mountains glaciers"
-    },
-
-    {
-        name: "🇳🇿 New Zealand",
-        query: "New Zealand landscape mountains lakes fjords"
-    },
-
-    {
-        name: "🇦🇺 Australia",
-        query: "Australia landscape nature coast mountains outback"
-    },
-
-    {
-        name: "🇨🇦 Canada",
-        query: "Canada landscape mountains lakes Rockies nature"
-    },
-
-    {
-        name: "🇺🇸 USA",
-        query: "USA landscape national parks mountains lakes"
-    },
-
-    {
-        name: "🇮🇹 Italy",
-        query: "Italy landscape Tuscany Dolomites lakes coast"
-    },
-
-    {
-        name: "🇫🇷 France",
-        query: "France landscape Alps Provence coast countryside"
-    },
-
-    {
-        name: "🇬🇷 Greece",
-        query: "Greece landscape islands mountains coast Santorini"
-    },
-
-    {
-        name: "🇪🇸 Spain",
-        query: "Spain landscape mountains coast countryside"
-    },
-
-    {
-        name: "🇵🇹 Portugal",
-        query: "Portugal landscape coast mountains countryside"
-    },
-
-    {
-        name: "🇳🇵 Nepal",
-        query: "Nepal landscape Himalayas mountains lakes valleys"
-    }
-
+const COUNTRIES = [
+    "India",
+    "Japan",
+    "Switzerland",
+    "Norway",
+    "Iceland",
+    "New Zealand",
+    "Australia",
+    "Canada",
+    "USA",
+    "Italy",
+    "France",
+    "Greece",
+    "Spain",
+    "Portugal",
+    "Nepal"
 ];
 
 
 /*
-   Number of images wanted per country.
-
-   We request 30 at a time because Unsplash supports
-   a maximum of 30 results per request.
+    Multiple searches make the generator much more reliable.
 */
+const SEARCH_TERMS = {
 
-const IMAGES_PER_COUNTRY = 50;
+    "India": [
+        "India landscape",
+        "India travel",
+        "India nature",
+        "India mountains",
+        "India city",
+        "India monument"
+    ],
+
+    "Japan": [
+        "Japan landscape",
+        "Japan travel",
+        "Japan nature",
+        "Japan mountains",
+        "Japan city",
+        "Japan countryside"
+    ],
+
+    "Switzerland": [
+        "Switzerland landscape",
+        "Swiss Alps",
+        "Switzerland mountains",
+        "Switzerland travel",
+        "Swiss countryside"
+    ],
+
+    "Norway": [
+        "Norway landscape",
+        "Norway fjords",
+        "Norway mountains",
+        "Norway travel",
+        "Norway nature"
+    ],
+
+    "Iceland": [
+        "Iceland landscape",
+        "Iceland waterfalls",
+        "Iceland mountains",
+        "Iceland travel",
+        "Iceland nature"
+    ],
+
+    "New Zealand": [
+        "New Zealand landscape",
+        "New Zealand mountains",
+        "New Zealand travel",
+        "New Zealand nature",
+        "New Zealand lakes"
+    ],
+
+    "Australia": [
+        "Australia landscape",
+        "Australia travel",
+        "Australia nature",
+        "Australian coast",
+        "Australia mountains",
+        "Australia city"
+    ],
+
+    "Canada": [
+        "Canada landscape",
+        "Canada mountains",
+        "Canada lakes",
+        "Canada travel",
+        "Canada nature",
+        "Canada city"
+    ],
+
+    "USA": [
+        "USA landscape",
+        "United States landscape",
+        "USA national parks",
+        "USA mountains",
+        "USA travel",
+        "USA city"
+    ],
+
+    "Italy": [
+        "Italy landscape",
+        "Italy travel",
+        "Italy countryside",
+        "Italy mountains",
+        "Italy coast",
+        "Italy city"
+    ],
+
+    "France": [
+        "France landscape",
+        "France travel",
+        "French countryside",
+        "France mountains",
+        "France coast",
+        "France city"
+    ],
+
+    "Greece": [
+        "Greece landscape",
+        "Greece islands",
+        "Greece travel",
+        "Greece coast",
+        "Greece mountains",
+        "Greece city"
+    ],
+
+    "Spain": [
+        "Spain landscape",
+        "Spain travel",
+        "Spain mountains",
+        "Spain coast",
+        "Spain countryside",
+        "Spain city"
+    ],
+
+    "Portugal": [
+        "Portugal landscape",
+        "Portugal travel",
+        "Portugal coast",
+        "Portugal countryside",
+        "Portugal city",
+        "Portugal mountains"
+    ],
+
+    "Nepal": [
+        "Nepal landscape",
+        "Nepal mountains",
+        "Nepal Himalayas",
+        "Nepal travel",
+        "Nepal nature",
+        "Nepal countryside"
+    ]
+};
 
 
-/*
-   Maximum search pages.
-
-   We use page 1 and page 2.
-
-   30 + 30 = up to 60 results.
-
-   Then we select 50 unique photos.
-*/
-
-const PAGES_NEEDED = 2;
+const STORAGE_KEY = "visheshLiveCountryImagesV2";
 
 
-/* =========================================================
-   UI HELPERS
-========================================================= */
+let countryImages = {};
 
-const statusBox =
-    document.getElementById("status");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const generateButton =
-    document.getElementById("generateButton");
+try {
+    countryImages =
+        JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+} catch (e) {
+    countryImages = {};
+}
 
 
-function setStatus(message) {
+/* Make sure all countries exist */
+COUNTRIES.forEach(country => {
 
-    statusBox.innerText =
-        message;
+    if (!Array.isArray(countryImages[country])) {
+        countryImages[country] = [];
+    }
+
+});
+
+
+function renderCountries() {
+
+    const container =
+        document.getElementById("countries");
+
+    container.innerHTML = "";
+
+    COUNTRIES.forEach(country => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "country";
+
+        const count =
+            countryImages[country]
+                ? countryImages[country].length
+                : 0;
+
+        button.innerHTML =
+            country +
+            '<span class="count">' +
+            count +
+            ' / 50</span>';
+
+        button.onclick =
+            () => generateCountry(country);
+
+        container.appendChild(button);
+
+    });
+
+    updateTotal();
 
 }
 
 
-function setProgress(percent) {
+function saveProgress() {
 
-    progressBar.style.width =
-        percent + "%";
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(countryImages)
+    );
 
 }
 
 
-/* =========================================================
-   UNSPLASH API REQUEST
-========================================================= */
+function updateTotal() {
 
-async function searchUnsplash(
-    accessKey,
-    query,
-    page
-) {
+    let total = 0;
 
-    const url =
-        "https://api.unsplash.com/search/photos" +
+    COUNTRIES.forEach(country => {
 
-        "?query=" +
-        encodeURIComponent(query) +
+        total +=
+            countryImages[country].length;
 
-        "&page=" +
-        page +
+    });
 
-        "&per_page=30" +
+    document.getElementById("totalProgress")
+        .textContent =
+        total + " / 750 photos";
 
-        "&orientation=landscape" +
+    renderCountriesWithoutRecursion();
 
-        "&content_filter=high";
+}
 
+
+function renderCountriesWithoutRecursion() {
+
+    const buttons =
+        document.querySelectorAll(".country");
+
+    buttons.forEach((button, index) => {
+
+        const country =
+            COUNTRIES[index];
+
+        const count =
+            countryImages[country].length;
+
+        button.innerHTML =
+            country +
+            '<span class="count">' +
+            count +
+            ' / 50</span>';
+
+    });
+
+}
+
+
+function setStatus(text) {
+
+    document.getElementById("status")
+        .textContent = text;
+
+}
+
+
+async function fetchJSON(url) {
 
     const response =
-        await fetch(
-            url,
-            {
-                method: "GET",
+        await fetch(url);
 
-                headers: {
-                    "Authorization":
-                        "Client-ID " +
-                        accessKey,
+    let data;
 
-                    "Accept-Version":
-                        "v1"
-                }
-            }
+    try {
+        data = await response.json();
+    } catch (e) {
+
+        throw new Error(
+            "Unsplash returned an invalid response."
         );
 
+    }
 
-    /*
-       Check HTTP errors.
-    */
 
     if (!response.ok) {
 
         let message =
-            "Unsplash API error: " +
-            response.status;
+            data && data.errors
+                ? data.errors.join(", ")
+                : "HTTP " + response.status;
 
-
-        try {
-
-            const errorData =
-                await response.json();
-
-
-            if (
-                errorData.errors &&
-                errorData.errors.length
-            ) {
-
-                message +=
-                    "\n" +
-                    errorData.errors.join("\n");
-
-            }
-
-        }
-        catch (e) {
-
-            /* Ignore JSON parsing error */
-
-        }
-
-
-        throw new Error(
-            message
-        );
+        throw new Error(message);
 
     }
 
-
-    return await response.json();
+    return data;
 
 }
 
 
-/* =========================================================
-   CLEAN PHOTO OBJECT
-========================================================= */
-
-function cleanPhoto(photo) {
-
-    /*
-       Use the URL returned by Unsplash.
-
-       "regular" is approximately 1080px wide,
-       which is more than enough for the dashboard
-       in most cases.
-
-       We add auto=format and q=80 only if the returned
-       URL supports Unsplash image parameters.
-    */
-
-    let imageURL =
-        photo.urls.regular;
-
-
-    /*
-       Make the image slightly more suitable for
-       a fullscreen background.
-
-       We preserve the original Unsplash URL.
-    */
-
-    if (imageURL.indexOf("?") >= 0) {
-
-        imageURL +=
-            "&q=85&fm=jpg";
-
-    }
-    else {
-
-        imageURL +=
-            "?q=85&fm=jpg";
-
-    }
-
-
-    /*
-       Photographer profile URL.
-
-       Unsplash requires attribution and a link
-       back to the photographer profile.
-    */
-
-    const photographerURL =
-        photo.user.links.html +
-        "?utm_source=vishesh_live&utm_medium=referral";
-
-
-    /*
-       Unsplash home URL for attribution.
-    */
-
-    const unsplashURL =
-        "https://unsplash.com/" +
-        "?utm_source=vishesh_live" +
-        "&utm_medium=referral";
-
-
-    return {
-
-        id:
-            photo.id,
-
-        url:
-            imageURL,
-
-        photographer:
-            photo.user.name,
-
-        photographerUrl:
-            photographerURL,
-
-        unsplashUrl:
-            unsplashURL,
-
-        photoUrl:
-            photo.links.html +
-            "?utm_source=vishesh_live" +
-            "&utm_medium=referral"
-
-    };
-
-}
-
-
-/* =========================================================
-   GET 50 UNIQUE PHOTOS FOR ONE COUNTRY
-========================================================= */
-
-async function getCountryImages(
-    accessKey,
-    country
+async function searchPhotos(
+    country,
+    searchTerm,
+    page,
+    accessKey
 ) {
 
-    const photos = [];
-
-    const photoIDs =
-        new Set();
-
-
-    /*
-       We use two pages.
-
-       Each page can contain 30 photographs.
-
-       Therefore we can get up to 60 candidates
-       and select the first 50 unique ones.
-    */
-
-    for (
-        let page = 1;
-        page <= PAGES_NEEDED;
-        page++
-    ) {
-
-        setStatus(
-            "Searching Unsplash...\n\n" +
-            country.name +
-            "\n" +
-            "Page " +
-            page +
-            " of " +
-            PAGES_NEEDED
-        );
+    const url =
+        "https://api.unsplash.com/search/photos" +
+        "?client_id=" +
+        encodeURIComponent(accessKey) +
+        "&query=" +
+        encodeURIComponent(searchTerm) +
+        "&page=" +
+        page +
+        "&per_page=30" +
+        "&orientation=landscape" +
+        "&content_filter=high";
 
 
-        const data =
-            await searchUnsplash(
-                accessKey,
-                country.query,
-                page
-            );
-
-
-        if (
-            !data.results ||
-            data.results.length === 0
-        ) {
-
-            continue;
-
-        }
-
-
-        for (
-            const photo of data.results
-        ) {
-
-            /*
-               Avoid duplicates.
-            */
-
-            if (
-                photoIDs.has(
-                    photo.id
-                )
-            ) {
-
-                continue;
-
-            }
-
-
-            photoIDs.add(
-                photo.id
-            );
-
-
-            /*
-               Make sure the photograph is
-               actually landscape.
-            */
-
-            if (
-                photo.width <=
-                photo.height
-            ) {
-
-                continue;
-
-            }
-
-
-            photos.push(
-                cleanPhoto(photo)
-            );
-
-
-            if (
-                photos.length >=
-                IMAGES_PER_COUNTRY
-            ) {
-
-                break;
-
-            }
-
-        }
-
-
-        if (
-            photos.length >=
-            IMAGES_PER_COUNTRY
-        ) {
-
-            break;
-
-        }
-
-    }
-
-
-    return photos;
+    return await fetchJSON(url);
 
 }
 
 
-/* =========================================================
-   MAIN GENERATOR
-========================================================= */
-
-async function generateImages() {
+async function generateCountry(country) {
 
     const accessKey =
-        document
-            .getElementById("accessKey")
-            .value
-            .trim();
+        document.getElementById("accessKey")
+            .value.trim();
 
-
-    /*
-       Check key.
-    */
 
     if (!accessKey) {
 
         alert(
-            "Please paste your Unsplash Access Key first."
+            "Please enter your Unsplash Access Key first."
         );
 
         return;
@@ -733,245 +507,326 @@ async function generateImages() {
     }
 
 
-    /*
-       Disable button while working.
-    */
+    if (
+        countryImages[country] &&
+        countryImages[country].length >= 50
+    ) {
 
-    generateButton.disabled =
-        true;
+        setStatus(
+            country +
+            " already has 50 photos."
+        );
 
+        return;
 
-    setProgress(0);
-
-
-    setStatus(
-        "Starting...\n\n" +
-        "15 countries will be processed."
-    );
+    }
 
 
-    /*
-       This object will eventually become
-       countryImages.js
-    */
+    let existingIds =
+        new Set(
+            countryImages[country]
+                .map(photo => photo.id)
+        );
 
-    const countryImages = {};
+
+    let collected =
+        countryImages[country];
+
+
+    let requestsMade = 0;
 
 
     try {
 
-        /*
-           Process countries one by one.
+        setStatus(
+            "Starting " +
+            country +
+            "...\n" +
+            "Already saved: " +
+            collected.length +
+            " / 50"
+        );
 
-           This is intentional.
 
-           We don't want to fire 30 requests
-           simultaneously and risk rate limits.
-        */
+        const terms =
+            SEARCH_TERMS[country];
+
 
         for (
-            let i = 0;
-            i < countries.length;
-            i++
+            let termIndex = 0;
+            termIndex < terms.length;
+            termIndex++
         ) {
 
-            const country =
-                countries[i];
-
-
-            setStatus(
-                "Processing country " +
-                (i + 1) +
-                " of " +
-                countries.length +
-
-                "\n\n" +
-
-                country.name +
-
-                "\n\n" +
-
-                "Please wait..."
-            );
-
-
-            const images =
-                await getCountryImages(
-                    accessKey,
-                    country
-                );
-
-
-            /*
-               Check whether enough photos
-               were obtained.
-            */
-
-            if (
-                images.length <
-                IMAGES_PER_COUNTRY
-            ) {
-
-                throw new Error(
-
-                    country.name +
-                    " returned only " +
-                    images.length +
-                    " suitable photographs.\n\n" +
-
-                    "Try again later or use a more specific search."
-
-                );
-
+            if (collected.length >= 50) {
+                break;
             }
 
 
-            /*
-               Store the first 50.
-            */
+            const searchTerm =
+                terms[termIndex];
 
-            countryImages[
-                country.name
-            ] =
-                images.slice(
-                    0,
-                    IMAGES_PER_COUNTRY
+
+            for (
+                let page = 1;
+                page <= 3;
+                page++
+            ) {
+
+                if (collected.length >= 50) {
+                    break;
+                }
+
+
+                setStatus(
+                    "Country: " +
+                    country +
+                    "\n" +
+                    "Search: " +
+                    searchTerm +
+                    "\n" +
+                    "Page: " +
+                    page +
+                    "\n" +
+                    "Photos: " +
+                    collected.length +
+                    " / 50"
                 );
 
 
-            /*
-               Update progress.
-            */
-
-            const percent =
-                Math.round(
-                    (
-                        (i + 1) /
-                        countries.length
-                    ) * 100
-                );
+                const data =
+                    await searchPhotos(
+                        country,
+                        searchTerm,
+                        page,
+                        accessKey
+                    );
 
 
-            setProgress(
-                percent
+                requestsMade++;
+
+
+                if (
+                    !data ||
+                    !Array.isArray(data.results)
+                ) {
+
+                    continue;
+
+                }
+
+
+                for (
+                    const photo of data.results
+                ) {
+
+                    if (
+                        collected.length >= 50
+                    ) {
+                        break;
+                    }
+
+
+                    if (
+                        !photo ||
+                        !photo.id ||
+                        !photo.urls ||
+                        !photo.urls.regular
+                    ) {
+                        continue;
+                    }
+
+
+                    if (
+                        existingIds.has(photo.id)
+                    ) {
+                        continue;
+                    }
+
+
+                    existingIds.add(photo.id);
+
+
+                    collected.push({
+
+                        id: photo.id,
+
+                        url: photo.urls.regular,
+
+                        photographer:
+                            photo.user
+                                ? photo.user.name
+                                : "",
+
+                        photographerUrl:
+                            photo.user &&
+                            photo.user.links
+                                ? photo.user.links.html
+                                : "",
+
+                        photoUrl:
+                            photo.links
+                                ? photo.links.html
+                                : "",
+
+                        unsplashUrl:
+                            "https://unsplash.com"
+
+                    });
+
+
+                    countryImages[country] =
+                        collected;
+
+
+                    saveProgress();
+
+                    updateTotal();
+
+                }
+
+
+                /*
+                    Save after every request.
+                */
+                countryImages[country] =
+                    collected;
+
+                saveProgress();
+
+                updateTotal();
+
+
+                /*
+                    Small delay to avoid hammering API.
+                */
+                await sleep(400);
+
+            }
+
+        }
+
+
+        if (collected.length >= 50) {
+
+            setStatus(
+                "✅ " +
+                country +
+                " completed!\n\n" +
+                "50 / 50 photos generated."
+            );
+
+        } else {
+
+            setStatus(
+                "⚠️ " +
+                country +
+                " returned only " +
+                collected.length +
+                " suitable photographs.\n\n" +
+                "Try running the same country again later. " +
+                "The existing photos are saved."
             );
 
         }
 
 
-        /*
-           Create the JavaScript file.
-        */
+    } catch (error) {
 
-        createDownloadFile(
-            countryImages
-        );
-
-
-        setProgress(100);
+        console.error(error);
 
 
         setStatus(
-
-            "✅ COMPLETE!\n\n" +
-
-            "750 curated landscape photographs " +
-            "have been collected.\n\n" +
-
-            "The file countryImages.js " +
-            "has been downloaded.\n\n" +
-
-            "Next step:\n" +
-
-            "Put countryImages.js in the same " +
-            "folder as your dashboard HTML."
-
-        );
-
-
-    }
-
-    catch (error) {
-
-        console.error(
-            error
-        );
-
-
-        setStatus(
-
-            "❌ ERROR\n\n" +
-
+            "❌ Error while generating " +
+            country +
+            ".\n\n" +
             error.message +
-
             "\n\n" +
-
-            "No file has been generated."
-
+            "Photos already collected have been saved."
         );
 
     }
 
 
-    finally {
-
-        generateButton.disabled =
-            false;
-
-    }
+    renderCountries();
 
 }
 
 
-/* =========================================================
-   CREATE DOWNLOADABLE JS FILE
-========================================================= */
+function sleep(ms) {
 
-function createDownloadFile(
-    countryImages
-) {
+    return new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
+
+}
 
 
-    /*
-       Convert object into readable JavaScript.
+async function generateAll() {
 
-       JSON.stringify makes the generated file
-       valid JavaScript when preceded by
-       "const countryImages =".
-    */
+    const accessKey =
+        document.getElementById("accessKey")
+            .value.trim();
 
-    const json =
+
+    if (!accessKey) {
+
+        alert(
+            "Please enter your Unsplash Access Key first."
+        );
+
+        return;
+
+    }
+
+
+    for (
+        const country of COUNTRIES
+    ) {
+
+        if (
+            countryImages[country].length >= 50
+        ) {
+            continue;
+        }
+
+
+        await generateCountry(country);
+
+    }
+
+
+    setStatus(
+        "🎉 Finished processing all countries.\n\n" +
+        "You can now download countryImages.js."
+    );
+
+}
+
+
+function downloadJS() {
+
+    let output =
+        "/*\n" +
+        "   Vishesh Live 2\n" +
+        "   Country Background Images\n" +
+        "   Generated from Unsplash API\n" +
+        "*/\n\n";
+
+
+    output +=
+        "const countryImages = " +
         JSON.stringify(
             countryImages,
             null,
             4
-        );
-
-
-    const fileContent =
-
-        "/* =====================================================\n" +
-
-        "   VISHESH LIVE - CURATED COUNTRY IMAGES\n" +
-
-        "   Generated using the Unsplash API\n" +
-
-        "===================================================== */\n\n" +
-
-        "const countryImages = " +
-
-        json +
-
+        ) +
         ";\n";
 
 
-    /*
-       Create a Blob.
-    */
-
     const blob =
         new Blob(
-            [fileContent],
+            [output],
             {
                 type:
                     "application/javascript"
@@ -979,59 +834,76 @@ function createDownloadFile(
         );
 
 
-    /*
-       Create temporary download link.
-    */
-
     const url =
-        URL.createObjectURL(
-            blob
-        );
+        URL.createObjectURL(blob);
 
 
     const link =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
 
-    link.href =
-        url;
-
+    link.href = url;
 
     link.download =
         "countryImages.js";
 
 
-    document.body.appendChild(
-        link
-    );
-
+    document.body.appendChild(link);
 
     link.click();
 
+    document.body.removeChild(link);
 
-    document.body.removeChild(
-        link
-    );
+    URL.revokeObjectURL(url);
 
 
-    /*
-       Release memory.
-    */
-
-    setTimeout(
-        function () {
-
-            URL.revokeObjectURL(
-                url
-            );
-
-        },
-        1000
+    setStatus(
+        "✅ countryImages.js downloaded."
     );
 
 }
+
+
+function clearProgress() {
+
+    const answer =
+        confirm(
+            "Delete all generated photos?"
+        );
+
+
+    if (!answer) {
+        return;
+    }
+
+
+    localStorage.removeItem(
+        STORAGE_KEY
+    );
+
+
+    countryImages = {};
+
+
+    COUNTRIES.forEach(country => {
+
+        countryImages[country] = [];
+
+    });
+
+
+    saveProgress();
+
+    renderCountries();
+
+    setStatus(
+        "All saved progress has been cleared."
+    );
+
+}
+
+
+renderCountries();
 
 </script>
 
