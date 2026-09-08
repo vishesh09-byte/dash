@@ -3,120 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vishesh Live 2 – Photo Generator</title>
+<title>Vishesh Live 2 – 4K Photo Generator</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        padding: 25px;
-        background: #111;
-        color: white;
-        font-family: Arial, sans-serif;
-    }
+body {
+    margin: 0;
+    padding: 25px;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+}
 
-    h1 {
-        margin-top: 0;
-    }
+h1 {
+    margin-top: 0;
+}
 
-    .note {
-        background: #222;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        line-height: 1.5;
-    }
+.note {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
 
-    input {
-        width: 100%;
-        max-width: 600px;
-        padding: 12px;
-        border-radius: 7px;
-        border: 1px solid #555;
-        background: #181818;
-        color: white;
-        font-size: 16px;
-        margin-bottom: 15px;
-    }
+.quality {
+    background: #183b55;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 15px 0;
+    line-height: 1.5;
+}
 
-    button {
-        padding: 10px 14px;
-        margin: 5px;
-        border: 0;
-        border-radius: 7px;
-        cursor: pointer;
-        background: #333;
-        color: white;
-        font-size: 14px;
-    }
+input {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
+    border-radius: 7px;
+    border: 1px solid #555;
+    background: #181818;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
 
-    button:hover {
-        background: #555;
-    }
+button {
+    padding: 10px 14px;
+    margin: 5px;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    background: #333;
+    color: white;
+    font-size: 14px;
+}
 
-    button:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
+button:hover {
+    background: #555;
+}
 
-    .country-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin: 20px 0;
-    }
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
 
-    .country {
-        min-width: 130px;
-    }
+.country-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 20px 0;
+}
 
-    .progress {
-        margin-top: 20px;
-        padding: 15px;
-        background: #222;
-        border-radius: 10px;
-    }
+.country {
+    min-width: 130px;
+}
 
-    #status {
-        white-space: pre-line;
-        margin-top: 15px;
-        color: #ddd;
-    }
+.progress {
+    margin-top: 20px;
+    padding: 15px;
+    background: #222;
+    border-radius: 10px;
+}
 
-    .download {
-        background: #176b3a;
-        font-size: 16px;
-        padding: 12px 20px;
-    }
+#status {
+    white-space: pre-line;
+    margin-top: 15px;
+    color: #ddd;
+}
 
-    .clear {
-        background: #722222;
-    }
+.download {
+    background: #176b3a;
+    font-size: 16px;
+    padding: 12px 20px;
+}
 
-    .count {
-        font-size: 12px;
-        color: #aaa;
-        display: block;
-        margin-top: 3px;
-    }
+.clear {
+    background: #722222;
+}
+
+.count {
+    font-size: 12px;
+    color: #aaa;
+    display: block;
+    margin-top: 3px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>🌍 Vishesh Live 2 – Background Photo Generator</h1>
+<h1>🌍 Vishesh Live 2 – 4K Background Photo Generator</h1>
 
 <div class="note">
     <b>Instructions</b><br>
     1. Enter your Unsplash Access Key.<br>
-    2. Select a country.<br>
-    3. The generator searches several queries and collects up to 50 photos.<br>
-    4. Progress is saved automatically in this browser.<br>
-    5. You can close the browser and continue later.<br>
-    6. When finished, download <b>countryImages.js</b>.
+    2. Select a country or click <b>Generate All Countries</b>.<br>
+    3. The generator accepts only photos whose original resolution is at least
+       <b>3840 × 2160 pixels</b>.<br>
+    4. Generated image URLs request up to <b>3840 px</b> width.<br>
+    5. Progress is saved automatically in this browser.<br>
+    6. You can close the browser and continue later.<br>
+    7. When finished, download <b>countryImages.js</b>.
+</div>
+
+<div class="quality">
+    <b>🎯 4K criteria</b><br>
+    Original photo width ≥ 3840 px AND original photo height ≥ 2160 px.<br>
+    The generator checks the actual photo dimensions returned by Unsplash.
+    It does not simply search for the word "4K".
 </div>
 
 <label><b>Unsplash Access Key</b></label><br>
@@ -128,13 +145,19 @@
 >
 
 <div>
-    <button onclick="generateAll()">Generate All Countries</button>
+
+    <button onclick="generateAll()">
+        Generate All Countries
+    </button>
+
     <button onclick="downloadJS()" class="download">
         Download countryImages.js
     </button>
+
     <button onclick="clearProgress()" class="clear">
         Clear Saved Progress
     </button>
+
 </div>
 
 <h2>Countries</h2>
@@ -142,16 +165,29 @@
 <div class="country-grid" id="countries"></div>
 
 <div class="progress">
-    <b>Total progress:</b>
-    <span id="totalProgress">0 / 750 photos</span>
 
-    <div id="status">Ready.</div>
+    <b>Total progress:</b>
+
+    <span id="totalProgress">
+        0 / 750 photos
+    </span>
+
+    <div id="status">
+        Ready.
+    </div>
+
 </div>
 
 
 <script>
 
+
+/* =========================================================
+   COUNTRIES
+   ========================================================= */
+
 const COUNTRIES = [
+
     "India",
     "Japan",
     "Switzerland",
@@ -167,12 +203,14 @@ const COUNTRIES = [
     "Spain",
     "Portugal",
     "Nepal"
+
 ];
 
 
-/*
-    Multiple searches make the generator much more reliable.
-*/
+/* =========================================================
+   SEARCH TERMS
+   ========================================================= */
+
 const SEARCH_TERMS = {
 
     "India": [
@@ -305,31 +343,60 @@ const SEARCH_TERMS = {
         "Nepal nature",
         "Nepal countryside"
     ]
+
 };
 
 
-const STORAGE_KEY = "visheshLiveCountryImagesV2";
+/* =========================================================
+   SETTINGS
+   ========================================================= */
 
+const STORAGE_KEY =
+    "visheshLiveCountryImagesV3_4K";
+
+const TARGET_PHOTOS = 50;
+
+const MIN_WIDTH = 3840;
+
+const MIN_HEIGHT = 2160;
+
+
+/* =========================================================
+   LOAD SAVED DATA
+   ========================================================= */
 
 let countryImages = {};
 
 try {
+
     countryImages =
-        JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        JSON.parse(
+            localStorage.getItem(STORAGE_KEY)
+        ) || {};
+
 } catch (e) {
+
     countryImages = {};
+
 }
 
 
-/* Make sure all countries exist */
+/* Make sure every country exists */
+
 COUNTRIES.forEach(country => {
 
     if (!Array.isArray(countryImages[country])) {
+
         countryImages[country] = [];
+
     }
 
 });
 
+
+/* =========================================================
+   COUNTRY BUTTONS
+   ========================================================= */
 
 function renderCountries() {
 
@@ -343,7 +410,8 @@ function renderCountries() {
         const button =
             document.createElement("button");
 
-        button.className = "country";
+        button.className =
+            "country";
 
         const count =
             countryImages[country]
@@ -354,7 +422,9 @@ function renderCountries() {
             country +
             '<span class="count">' +
             count +
-            ' / 50</span>';
+            " / " +
+            TARGET_PHOTOS +
+            "</span>";
 
         button.onclick =
             () => generateCountry(country);
@@ -368,15 +438,26 @@ function renderCountries() {
 }
 
 
+/* =========================================================
+   SAVE PROGRESS
+   ========================================================= */
+
 function saveProgress() {
 
     localStorage.setItem(
+
         STORAGE_KEY,
+
         JSON.stringify(countryImages)
+
     );
 
 }
 
+
+/* =========================================================
+   UPDATE TOTAL
+   ========================================================= */
 
 function updateTotal() {
 
@@ -389,14 +470,22 @@ function updateTotal() {
 
     });
 
-    document.getElementById("totalProgress")
-        .textContent =
-        total + " / 750 photos";
+    document.getElementById(
+        "totalProgress"
+    ).textContent =
+        total +
+        " / " +
+        (COUNTRIES.length * TARGET_PHOTOS) +
+        " photos";
 
     renderCountriesWithoutRecursion();
 
 }
 
+
+/* =========================================================
+   UPDATE COUNTRY BUTTON COUNTS
+   ========================================================= */
 
 function renderCountriesWithoutRecursion() {
 
@@ -415,20 +504,31 @@ function renderCountriesWithoutRecursion() {
             country +
             '<span class="count">' +
             count +
-            ' / 50</span>';
+            " / " +
+            TARGET_PHOTOS +
+            "</span>";
 
     });
 
 }
 
 
+/* =========================================================
+   STATUS
+   ========================================================= */
+
 function setStatus(text) {
 
-    document.getElementById("status")
-        .textContent = text;
+    document.getElementById(
+        "status"
+    ).textContent = text;
 
 }
 
+
+/* =========================================================
+   FETCH JSON
+   ========================================================= */
 
 async function fetchJSON(url) {
 
@@ -438,7 +538,10 @@ async function fetchJSON(url) {
     let data;
 
     try {
-        data = await response.json();
+
+        data =
+            await response.json();
+
     } catch (e) {
 
         throw new Error(
@@ -459,13 +562,17 @@ async function fetchJSON(url) {
 
     }
 
+
     return data;
 
 }
 
 
+/* =========================================================
+   UNSPLASH SEARCH
+   ========================================================= */
+
 async function searchPhotos(
-    country,
     searchTerm,
     page,
     accessKey
@@ -473,14 +580,20 @@ async function searchPhotos(
 
     const url =
         "https://api.unsplash.com/search/photos" +
+
         "?client_id=" +
         encodeURIComponent(accessKey) +
+
         "&query=" +
         encodeURIComponent(searchTerm) +
+
         "&page=" +
         page +
+
         "&per_page=30" +
+
         "&orientation=landscape" +
+
         "&content_filter=high";
 
 
@@ -489,11 +602,46 @@ async function searchPhotos(
 }
 
 
+/* =========================================================
+   CREATE 4K IMAGE URL
+   ========================================================= */
+
+function make4KUrl(photo) {
+
+    if (
+        !photo ||
+        !photo.urls ||
+        !photo.urls.raw
+    ) {
+
+        return "";
+
+    }
+
+
+    return photo.urls.raw +
+
+        "&auto=format" +
+
+        "&fit=max" +
+
+        "&w=3840" +
+
+        "&q=85";
+
+}
+
+
+/* =========================================================
+   GENERATE ONE COUNTRY
+   ========================================================= */
+
 async function generateCountry(country) {
 
     const accessKey =
-        document.getElementById("accessKey")
-            .value.trim();
+        document.getElementById(
+            "accessKey"
+        ).value.trim();
 
 
     if (!accessKey) {
@@ -509,12 +657,17 @@ async function generateCountry(country) {
 
     if (
         countryImages[country] &&
-        countryImages[country].length >= 50
+        countryImages[country].length >=
+        TARGET_PHOTOS
     ) {
 
         setStatus(
+
             country +
-            " already has 50 photos."
+            " already has " +
+            TARGET_PHOTOS +
+            " 4K photos."
+
         );
 
         return;
@@ -524,8 +677,10 @@ async function generateCountry(country) {
 
     let existingIds =
         new Set(
+
             countryImages[country]
                 .map(photo => photo.id)
+
         );
 
 
@@ -533,18 +688,26 @@ async function generateCountry(country) {
         countryImages[country];
 
 
-    let requestsMade = 0;
-
-
     try {
 
         setStatus(
+
             "Starting " +
             country +
-            "...\n" +
+            "...\n\n" +
+
             "Already saved: " +
             collected.length +
-            " / 50"
+            " / " +
+            TARGET_PHOTOS +
+            "\n\n" +
+
+            "Only original photos ≥ " +
+            MIN_WIDTH +
+            " × " +
+            MIN_HEIGHT +
+            " will be accepted."
+
         );
 
 
@@ -552,14 +715,24 @@ async function generateCountry(country) {
             SEARCH_TERMS[country];
 
 
+        /*
+            Search several terms.
+            Four pages per term.
+        */
+
         for (
             let termIndex = 0;
             termIndex < terms.length;
             termIndex++
         ) {
 
-            if (collected.length >= 50) {
+            if (
+                collected.length >=
+                TARGET_PHOTOS
+            ) {
+
                 break;
+
             }
 
 
@@ -569,46 +742,58 @@ async function generateCountry(country) {
 
             for (
                 let page = 1;
-                page <= 3;
+                page <= 4;
                 page++
             ) {
 
-                if (collected.length >= 50) {
+                if (
+                    collected.length >=
+                    TARGET_PHOTOS
+                ) {
+
                     break;
+
                 }
 
 
                 setStatus(
+
                     "Country: " +
                     country +
-                    "\n" +
-                    "Search: " +
+
+                    "\nSearch: " +
                     searchTerm +
-                    "\n" +
-                    "Page: " +
+
+                    "\nPage: " +
                     page +
-                    "\n" +
-                    "Photos: " +
+
+                    "\n4K photos: " +
                     collected.length +
-                    " / 50"
+                    " / " +
+                    TARGET_PHOTOS +
+
+                    "\n\nChecking original dimensions..."
+
                 );
 
 
                 const data =
                     await searchPhotos(
-                        country,
+
                         searchTerm,
+
                         page,
+
                         accessKey
+
                     );
-
-
-                requestsMade++;
 
 
                 if (
                     !data ||
-                    !Array.isArray(data.results)
+                    !Array.isArray(
+                        data.results
+                    )
                 ) {
 
                     continue;
@@ -621,9 +806,12 @@ async function generateCountry(country) {
                 ) {
 
                     if (
-                        collected.length >= 50
+                        collected.length >=
+                        TARGET_PHOTOS
                     ) {
+
                         break;
+
                     }
 
 
@@ -631,27 +819,75 @@ async function generateCountry(country) {
                         !photo ||
                         !photo.id ||
                         !photo.urls ||
-                        !photo.urls.regular
+                        !photo.urls.raw
                     ) {
+
                         continue;
+
                     }
 
 
                     if (
-                        existingIds.has(photo.id)
+                        existingIds.has(
+                            photo.id
+                        )
                     ) {
+
                         continue;
+
                     }
 
 
-                    existingIds.add(photo.id);
+                    /*
+                        ACTUAL 4K CHECK
+
+                        The original photograph itself
+                        must be at least 3840 × 2160.
+                    */
+
+                    const originalWidth =
+                        Number(photo.width) || 0;
+
+                    const originalHeight =
+                        Number(photo.height) || 0;
+
+
+                    if (
+                        originalWidth <
+                        MIN_WIDTH ||
+
+                        originalHeight <
+                        MIN_HEIGHT
+                    ) {
+
+                        continue;
+
+                    }
+
+
+                    const imageUrl =
+                        make4KUrl(photo);
+
+
+                    if (!imageUrl) {
+
+                        continue;
+
+                    }
+
+
+                    existingIds.add(
+                        photo.id
+                    );
 
 
                     collected.push({
 
-                        id: photo.id,
+                        id:
+                            photo.id,
 
-                        url: photo.urls.regular,
+                        url:
+                            imageUrl,
 
                         photographer:
                             photo.user
@@ -670,7 +906,16 @@ async function generateCountry(country) {
                                 : "",
 
                         unsplashUrl:
-                            "https://unsplash.com"
+                            "https://unsplash.com",
+
+                        originalWidth:
+                            originalWidth,
+
+                        originalHeight:
+                            originalHeight,
+
+                        quality:
+                            "4K"
 
                     });
 
@@ -683,12 +928,33 @@ async function generateCountry(country) {
 
                     updateTotal();
 
+
+                    setStatus(
+
+                        "Country: " +
+                        country +
+
+                        "\n\nAdded 4K photo:" +
+
+                        "\n" +
+                        originalWidth +
+                        " × " +
+                        originalHeight +
+
+                        "\n\nProgress: " +
+                        collected.length +
+                        " / " +
+                        TARGET_PHOTOS
+
+                    );
+
                 }
 
 
                 /*
-                    Save after every request.
+                    Save after every API request.
                 */
+
                 countryImages[country] =
                     collected;
 
@@ -698,8 +964,9 @@ async function generateCountry(country) {
 
 
                 /*
-                    Small delay to avoid hammering API.
+                    Small delay between requests.
                 */
+
                 await sleep(400);
 
             }
@@ -707,25 +974,43 @@ async function generateCountry(country) {
         }
 
 
-        if (collected.length >= 50) {
+        if (
+            collected.length >=
+            TARGET_PHOTOS
+        ) {
 
             setStatus(
+
                 "✅ " +
                 country +
                 " completed!\n\n" +
-                "50 / 50 photos generated."
+
+                TARGET_PHOTOS +
+                " genuine 4K-capable photos generated.\n\n" +
+
+                "Minimum original size: " +
+                MIN_WIDTH +
+                " × " +
+                MIN_HEIGHT
+
             );
 
         } else {
 
             setStatus(
+
                 "⚠️ " +
                 country +
+
                 " returned only " +
                 collected.length +
-                " suitable photographs.\n\n" +
-                "Try running the same country again later. " +
-                "The existing photos are saved."
+                " suitable 4K photographs.\n\n" +
+
+                "Lower-resolution images were rejected.\n\n" +
+
+                "Run this country again later. " +
+                "Existing 4K photos are saved."
+
             );
 
         }
@@ -737,12 +1022,16 @@ async function generateCountry(country) {
 
 
         setStatus(
+
             "❌ Error while generating " +
             country +
+
             ".\n\n" +
+
             error.message +
-            "\n\n" +
-            "Photos already collected have been saved."
+
+            "\n\nPhotos already collected have been saved."
+
         );
 
     }
@@ -753,6 +1042,10 @@ async function generateCountry(country) {
 }
 
 
+/* =========================================================
+   DELAY
+   ========================================================= */
+
 function sleep(ms) {
 
     return new Promise(
@@ -762,11 +1055,16 @@ function sleep(ms) {
 }
 
 
+/* =========================================================
+   GENERATE ALL
+   ========================================================= */
+
 async function generateAll() {
 
     const accessKey =
-        document.getElementById("accessKey")
-            .value.trim();
+        document.getElementById(
+            "accessKey"
+        ).value.trim();
 
 
     if (!accessKey) {
@@ -785,95 +1083,142 @@ async function generateAll() {
     ) {
 
         if (
-            countryImages[country].length >= 50
+            countryImages[country].length >=
+            TARGET_PHOTOS
         ) {
+
             continue;
+
         }
 
 
-        await generateCountry(country);
+        await generateCountry(
+            country
+        );
 
     }
 
 
     setStatus(
+
         "🎉 Finished processing all countries.\n\n" +
-        "You can now download countryImages.js."
+
+        "Download countryImages.js when ready."
+
     );
 
 }
 
 
+/* =========================================================
+   DOWNLOAD JAVASCRIPT FILE
+   ========================================================= */
+
 function downloadJS() {
 
     let output =
+
         "/*\n" +
+
         "   Vishesh Live 2\n" +
+
         "   Country Background Images\n" +
-        "   Generated from Unsplash API\n" +
+
+        "   4K-capable photos generated from Unsplash API\n" +
+
+        "   Minimum original resolution: 3840 x 2160\n" +
+
         "*/\n\n";
 
 
     output +=
+
         "const countryImages = " +
+
         JSON.stringify(
+
             countryImages,
+
             null,
+
             4
+
         ) +
+
         ";\n";
 
 
     const blob =
         new Blob(
+
             [output],
+
             {
                 type:
                     "application/javascript"
             }
+
         );
 
 
     const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+            blob
+        );
 
 
     const link =
-        document.createElement("a");
+        document.createElement(
+            "a"
+        );
 
 
-    link.href = url;
+    link.href =
+        url;
 
     link.download =
         "countryImages.js";
 
 
-    document.body.appendChild(link);
+    document.body.appendChild(
+        link
+    );
 
     link.click();
 
-    document.body.removeChild(link);
+    document.body.removeChild(
+        link
+    );
 
-    URL.revokeObjectURL(url);
+
+    URL.revokeObjectURL(
+        url
+    );
 
 
     setStatus(
-        "✅ countryImages.js downloaded."
+        "✅ 4K countryImages.js downloaded."
     );
 
 }
 
 
+/* =========================================================
+   CLEAR PROGRESS
+   ========================================================= */
+
 function clearProgress() {
 
     const answer =
         confirm(
-            "Delete all generated photos?"
+            "Delete all generated 4K photos?"
         );
 
 
     if (!answer) {
+
         return;
+
     }
 
 
@@ -896,12 +1241,17 @@ function clearProgress() {
 
     renderCountries();
 
+
     setStatus(
-        "All saved progress has been cleared."
+        "All saved 4K progress has been cleared."
     );
 
 }
 
+
+/* =========================================================
+   START
+   ========================================================= */
 
 renderCountries();
 
